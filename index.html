@@ -162,11 +162,11 @@
 
         /* Sayfa Bölümleri Yönetimi (Görünürlük Stilleri) */
         .page-section {
-            display: none; /* Varsayılan olarak tüm bölümler gizli */
+            display: none;
         }
 
         .page-section.active-section {
-            display: block; /* Sadece aktif olan bölüm görünecek */
+            display: block;
         }
 
         .content-box {
@@ -213,7 +213,7 @@
             font-weight: bold;
         }
 
-        /* Arcade Launch Button Styling */
+        /* Arcade/Launcher Button Styling */
         .arcade-btn {
             display: inline-block;
             padding: 15px 30px;
@@ -234,42 +234,6 @@
             box-shadow: 0 0 25px var(--accent);
             transform: scale(1.05);
             text-shadow: none;
-        }
-
-        /* Kabin Çerçeve Tasarımı */
-        .arcade-frame-wrapper {
-            position: relative;
-            width: 100%;
-            background: #000;
-            border: 2px solid #333;
-            padding: 10px;
-            margin-top: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
-        }
-        
-        .arcade-frame-wrapper::before {
-            content: "ARCADE_CABINET // LIVE_STREAM";
-            position: absolute;
-            top: -12px;
-            left: 15px;
-            background: var(--bg-color);
-            padding: 0 10px;
-            font-size: 0.7rem;
-            color: var(--pink-glitch);
-            font-weight: bold;
-        }
-
-        .game-container {
-            width: 100%;
-            height: 530px;
-            border: 1px solid var(--secondary);
-            background: #000;
-        }
-
-        .game-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
         /* Geri Dön Buton Stili */
@@ -312,9 +276,6 @@
             nav {
                 border-right: none;
                 border-bottom: var(--border-style);
-            }
-            .game-container {
-                height: 350px;
             }
         }
 
@@ -402,6 +363,7 @@
 
         <main>
             
+            <!-- 1. BÖLÜM: HOME (MANIFESTO) -->
             <div id="home-section" class="page-section active-section">
                 <div class="content-box">
                     <h2>[ MANIFESTO ]</h2>
@@ -425,6 +387,7 @@
                 </div>
             </div>
 
+            <!-- 2. BÖLÜM: ARCADE CABINET SECTION (STREET FIGHTER) -->
             <div id="arcade-section" class="page-section">
                 <div class="content-box">
                     <div style="margin-bottom: 20px;">
@@ -443,24 +406,27 @@
                 </div>
             </div>
 
+            <!-- 3. BÖLÜM: MINESWEEPER SECTION (BUTONA DÖNÜŞTÜRÜLEN ALAN) -->
             <div id="minesweeper-section" class="page-section">
                 <div class="content-box">
                     <div style="margin-bottom: 20px;">
                         <a class="back-to-home back-btn">[ << RETURN_TO_MAIN_TERMINAL ]</a>
                     </div>
                     <h2>[ PORTAL: MINESWEEPER_JS ]</h2>
-                    <p style="font-size: 0.8rem; margin-bottom: 15px; color: #aaa;">
-                        Klasik mayın tarlası simülasyonu sisteme entegre edildi. Sol tık kare açar, sağ tık bayrak bırakır hocam. Dikkat et patlama! 💣
+                    <p style="font-size: 0.8rem; margin-bottom: 20px; color: #aaa;">
+                        Klasik Mayın Tarlası simülasyonunu tam ekran ve temiz bir arayüzde oynamak için aşağıdaki bağlantıyı tetikle hocam.
                     </p>
                     
-                    <div class="arcade-frame-wrapper">
-                        <div class="game-container">
-                            <iframe src="minesweeper_js/index.html" title="Minesweeper"></iframe>
-                        </div>
+                    <div style="text-align: center; padding: 20px;">
+                        <!-- target="_blank" ile yan sekmede pürüzsüzce açılır -->
+                        <a href="minesweeper_js/index.html" target="_blank" class="arcade-btn">
+                            [ LAUNCH_MINESWEEPER.EXE ]
+                        </a>
                     </div>
                 </div>
             </div>
 
+            <!-- 4. BÖLÜM: PROJECTS SECTION -->
             <div id="projects-section" class="page-section">
                 <div class="content-box">
                     <h2>[ DATABASE: PROJECTS ]</h2>
@@ -485,6 +451,7 @@
                 </div>
             </div>
 
+            <!-- 5. BÖLÜM: GUESTBOOK SECTION -->
             <div id="guestbook-section" class="page-section">
                 <div class="content-box">
                     <h2>[ SYSTEM: GUESTBOOK ]</h2>
@@ -524,7 +491,7 @@
         });
 
         /* === ETKİLEŞİMLİ GERİ DÖNME BUTONLARI === */
-        const backToHomeButtons = document.querySelectorAll('.back-to-home');
+        const backToHomeButtons = document.querySelectorAll('.back-btn');
         backToHomeButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 navLinks.forEach(l => l.classList.remove('active-nav'));
